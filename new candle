@@ -1,0 +1,213 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <variables>
+    <variable type="" id="QwU9N@Ffq3eD!lE#tE-b">The candle new</variable>
+    <variable type="" id="Mp^3U;g7t=o.-Bic)h+8">Curent candle time</variable>
+    <variable type="" id="?~1fYfxFjk@qVXuH0!K6">Locking_Poin</variable>
+    <variable type="" id="GsZHnMfah-h[@gPE_mZV">locking poin (+)</variable>
+    <variable type="" id="F}+/FdA@W^s1KS9TUY8r">OP UP</variable>
+    <variable type="" id="/oN0PL=M)L,+,OfD]|Cq">locking poin (-)</variable>
+    <variable type="" id="$cG=)RC_Pjtji=v04yW3">OP DOWN</variable>
+  </variables>
+  <block type="before_purchase" id="9[/Y~d`U|h2qRU,L?iys" x="0" y="0">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="notify" id="um3r5xN5sNv!L~*:]H9O">
+        <field name="NOTIFICATION_TYPE">info</field>
+        <field name="NOTIFICATION_SOUND">silent</field>
+        <value name="MESSAGE">
+          <shadow type="text" id="](`n:HqLPy#+l/@#h|l2">
+            <field name="TEXT">Xin chờ .... Chưa đủ điều kiện, đang phân tích dữ liệu để vào lệnh .....</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="controls_if" id="!@qiaRr/0us5UI;0LGcd">
+            <value name="IF0">
+              <block type="procedures_callreturn" id="xj/.w)Uoxf-Ffumm?F)O">
+                <mutation name="New candle"></mutation>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id="0z[:4od@D*6PsYeB0n!Y">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_operation" id="$LnEP68ze)^Ac+cpomP@">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id="s4pi[5C];uZCvA~*E5y,">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="~DR+L%-xO7OSUoU/9~Tw">
+                            <field name="VAR" id="?~1fYfxFjk@qVXuH0!K6" variabletype="">Locking_Poin</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="|CA._ULV!$B,/_Z{x+Tk">
+                            <field name="VAR" id="GsZHnMfah-h[@gPE_mZV" variabletype="">locking poin (+)</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_compare" id="(fIoq7GJeES?[F`K|H%E">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="=X9Iu]|0qruHg1U}-T!:">
+                            <field name="VAR" id="F}+/FdA@W^s1KS9TUY8r" variabletype="">OP UP</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_boolean" id="2hxFJ{!)^:(rB}Z^yfnF">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="purchase" id="a?.fcWOXcw}Qf^9+1ldS">
+                    <field name="PURCHASE_LIST">UPORDOWN</field>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_operation" id="X33X+)2VO[bxh-]2-}^e">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id="_II%LYo/t9giklU8zd24">
+                        <field name="OP">LT</field>
+                        <value name="A">
+                          <block type="variables_get" id="$otyDRAYey7rR@MOT{Z=">
+                            <field name="VAR" id="?~1fYfxFjk@qVXuH0!K6" variabletype="">Locking_Poin</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="xg3p(i;o7,iy4x+FP[6`">
+                            <field name="VAR" id="/oN0PL=M)L,+,OfD]|Cq" variabletype="">locking poin (-)</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_compare" id="cXDr_%zSnd:j_MGL(_MB">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="xqQ0:B.3GJ7TQ?t:tm91">
+                            <field name="VAR" id="$cG=)RC_Pjtji=v04yW3" variabletype="">OP DOWN</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_boolean" id="gn5]/V_h(|`A[1;DTOK@">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="purchase" id="!P;LnJxi)fLtxNYa(O=9">
+                    <field name="PURCHASE_LIST">UPORDOWN</field>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="D;NptzlS4wIIOrKt|8b=" collapsed="true" x="0" y="345">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="controls_if" id="H9rlCiW2?*2H0OsT{A,r">
+        <statement name="DO0">
+          <block type="trade_again" id="c)S|KjoQdXc8l#J@5z3P"></block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="KaVVpt@z|(CiyM`kc`G." x="0" y="398">
+    <field name="NAME">New candle</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <value name="RETURN">
+      <block type="variables_get" id="{4aZM1=+/O;L_n`/u_lR">
+        <field name="VAR" id="QwU9N@Ffq3eD!lE#tE-b" variabletype="">The candle new</field>
+      </block>
+    </value>
+  </block>
+  <block type="tick_analysis" id="t{kGb-i@gBER!|CU[bg3" x="0" y="511">
+    <statement name="TICKANALYSIS_STACK">
+      <block type="variables_set" id="k~tbETu`,?9~S$4c|9b=">
+        <field name="VAR" id="QwU9N@Ffq3eD!lE#tE-b" variabletype="">The candle new</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="4;f+bkw5D:35n+;]3aYq">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="ZLuzLTLhk.#{PGZ:_oO:">
+            <value name="IF0">
+              <block type="logic_operation" id="142B=Ew/qC`GWz_Aqvh2" inline="false">
+                <field name="OP">OR</field>
+                <value name="A">
+                  <block type="logic_negate" id=";#]can^rR=QE%{m7I{{x">
+                    <value name="BOOL">
+                      <block type="variables_get" id="{MVBwp)@[XbCZS$s?j+@">
+                        <field name="VAR" id="Mp^3U;g7t=o.-Bic)h+8" variabletype="">Curent candle time</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_compare" id="}MvB2td(q:Ix8eUNp5}R" inline="false">
+                    <field name="OP">NEQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="1NJ/5xP}#BliMeEMKTJm">
+                        <field name="VAR" id="Mp^3U;g7t=o.-Bic)h+8" variabletype="">Curent candle time</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="read_ohlc" id="$;ufc6;I=MoB`SL`U(vn">
+                        <field name="OHLCFIELD_LIST">epoch</field>
+                        <field name="CANDLEINTERVAL_LIST">default</field>
+                        <value name="CANDLEINDEX">
+                          <shadow type="math_number" id="PH*kg}PoTxZ?f%T%|Z`(">
+                            <field name="NUM">1</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="]S-L+E*p3]V+f(#C6M=^">
+                <field name="VAR" id="Mp^3U;g7t=o.-Bic)h+8" variabletype="">Curent candle time</field>
+                <value name="VALUE">
+                  <block type="read_ohlc" id="BkkS9E.*T,Ry-gc`6rSV">
+                    <field name="OHLCFIELD_LIST">epoch</field>
+                    <field name="CANDLEINTERVAL_LIST">default</field>
+                    <value name="CANDLEINDEX">
+                      <shadow type="math_number" id="nqNl2P4Se=viM{1Xc?mY">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="g,B}tc5L9c*b5^(Q7%AJ">
+                    <field name="VAR" id="QwU9N@Ffq3eD!lE#tE-b" variabletype="">The candle new</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="LAS6d*fZT?Qm#iY!})ix">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
